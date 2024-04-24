@@ -52,14 +52,41 @@ def scientific():
     op = input(
         'What kind of operation would you like to do?\
         \nChoose between "^, r, %, !, sin, cos, tan, ln" : ')
-
     if op in '^r%':
-        a = int(input('Please type the first number: '))
-        b = int(input('Please type the second number: '))
-    elif op in '!sincostanln':
+        a = float(input('Please type the first number: '))
+        b = float(input('Please type the second number: '))
+        if op == '^':
+            return str(a) + ' ' + op + ' ' + str(b) + ' = ' + str(a ** b)  # Exponentiation
+        elif op == 'r':
+            return str(a) + ' ' + op + ' ' + str(b) + ' = ' + str(a ** (1 / b))  # Root
+        elif op == '%':
+            return str(a) + ' ' + op + ' ' + str(b) + ' = ' + str(a % b)  # Modulus
+    elif op == '!':
         a = int(input('Please type the number: '))
+        result = 1
+        for i in range(1, a + 1):
+            result *= i
+        return str(a) + ' ' + op + ' = ' + str(result)  # Factorial
+    elif op in ['sin', 'cos', 'tan']:
+        a = float(input('Please type the angle in radians: '))
+        if op == 'sin':
+            return 'sin(' + str(a) + ') = ' + str(math.sin(a))
+        elif op == 'cos':
+            return 'cos(' + str(a) + ') = ' + str(math.cos(a))
+        elif op == 'tan':
+            return 'tan(' + str(a) + ') = ' + str(math.tan(a))
+    elif op == 'ln':
+        a = float(input('Please type the number: '))
+        return 'ln(' + str(a) + ') = ' + str(math.log(a))  # Natural logarithm
+    else:
+        return "Incorrect operator! Please select from the given options!"
 
-        # Your solution here
+   
+
+        # What kind of operation would you like to do?        
+#Choose between "^, r, %, !, sin, cos, tan, ln" : sin
+#Please type the angle in radians: 1.5708
+#sin(1.5708) = 0.9999999999932537
 
 
 def main():  # Wrapper function
